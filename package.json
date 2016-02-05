@@ -12,12 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rodrigo-morais/ember-json-pretty.git"
+    "url": "git+https://github.com/rodrigo-morais/ember-json-pretty.git"
   },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "Rodrigo Morais <morais.rm@gmail.com>",
+  "author": {
+    "name": "Rodrigo Morais",
+    "email": "morais.rm@gmail.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
@@ -50,5 +53,30 @@
   },
   "dependencies": {
     "ember-cli-font-awesome": "0.0.9"
-  }
+  },
+  "gitHead": "012480486241667ab87b2f89f859306ec4f0d807",
+  "bugs": {
+    "url": "https://github.com/rodrigo-morais/ember-json-pretty/issues"
+  },
+  "homepage": "https://github.com/rodrigo-morais/ember-json-pretty#readme",
+  "_id": "ember-json-pretty@0.1.2",
+  "_shasum": "7b455f90b0003c9b2601e72e15f401de8c6ebe99",
+  "_from": "ember-json-pretty@*",
+  "_npmVersion": "2.10.1",
+  "_nodeVersion": "0.12.4",
+  "_npmUser": {
+    "name": "rodrigo-morais",
+    "email": "morais.rm@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "rodrigo-morais",
+      "email": "morais.rm@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "7b455f90b0003c9b2601e72e15f401de8c6ebe99",
+    "tarball": "http://registry.npmjs.org/ember-json-pretty/-/ember-json-pretty-0.1.2.tgz"
+  },
+  "_resolved": "https://registry.npmjs.org/ember-json-pretty/-/ember-json-pretty-0.1.2.tgz"
 }

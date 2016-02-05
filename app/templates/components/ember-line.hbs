@@ -1,20 +1,20 @@
-{{#each element in line.elements}}
-    {{#if element.hasPlus}}
-        <i {{bind-attr id=element.plusId }} class="fa fa-minus-square-o plus-icon" {{action 'toggleExpand' element.plusId}}></i>
+{{#each line.elements as |item|}}
+    {{#if item.hasPlus}}
+        <i id={{item.plusId }} class="fa fa-minus-square-o plus-icon" {{action 'toggleExpand' item.plusId}}></i>
     {{/if}}
-    {{#if element.isBlank}}
-        <span {{bind-attr class="element.class"}}>
+    {{#if item.isBlank}}
+        <span class={{item.class}}>
             &nbsp;&nbsp;
         </span>
     {{/if}}
-    {{#unless element.isBlank}}
-        <span {{bind-attr class="element.class" style="element.style"}}>
-            {{element.element}}
+    {{#unless item.isBlank}}
+        <span style={{item.style}} class={{item.class}}>
+            {{item.element}}
         </span>
     {{/unless}}
 {{/each}}
-{{#each line in line.lines}}
-    <div {{bind-attr data-id=line.plusId }} class="new-line">
-        {{partial 'components/ember-line'}}
+{{#each line.lines as |item|}}
+    <div data-id={{item.plusId }} class="new-line">
+        {{ember-line line=item toggleExpand='toggleExpand'}}
     </div>
 {{/each}}

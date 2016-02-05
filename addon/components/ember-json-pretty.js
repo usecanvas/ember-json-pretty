@@ -73,12 +73,12 @@ var _addValue = function(value, numberSpaces, hasComma, options){
         }
         else if(Array.isArray(value)){
             if(typeof value[0] === 'object'){
-                
+
                 jsonObj = _createJSONTree(value, numberSpaces, options, hasComma);
             }
             else{
                 jsonObj = _createJSONTree(value, numberSpaces, options, hasComma);
-            }            
+            }
         }
         else if(value && typeof value === 'object'){
             jsonObj = _addObjectValue(value, numberSpaces, options);
@@ -148,7 +148,8 @@ var _createObject = function(obj, numberSpacesInitial, options) {
     jsonLine = _addBrace('{', numberSpacesInitial, true, options['braceColor'], options['braceHighlight']);
 
     numberSpaces = numberSpaces + 1;
-    Object.keys(obj).forEach(function(key, index){
+    if (!!obj){
+        Object.keys(obj).forEach(function(key, index){
         var hasComma = false,
             internalJsonLine = {
                 elements: [],
@@ -175,7 +176,7 @@ var _createObject = function(obj, numberSpacesInitial, options) {
 
         if(Array.isArray(newValue) && newValue[0].elements[newValue[0].elements.length - 1].class === 'json-brace'){
             var openBrace = newValue[0].elements[newValue[0].elements.length - 1];
-            
+
             internalJsonLine
                 .elements
                 .push(openBrace);
@@ -224,6 +225,8 @@ var _createObject = function(obj, numberSpacesInitial, options) {
             }
         }
     });
+
+    }
 
     jsonLines.push(jsonLine);
     jsonLines.push(_addBrace('}', numberSpacesInitial, false, options['braceColor'], options['braceHighlight']));
@@ -371,9 +374,8 @@ var _createJSONTree = function(obj, numberSpaces, options, hasComma) {
 };
 
 var _prettyPrint = function(obj, options) {
-    
-    var jsonTree = _createJSONTree( obj, 0, options, false);
 
+    var jsonTree = _createJSONTree( obj, 0, options, false);
     return jsonTree;
 };
 
@@ -406,7 +408,7 @@ export default Ember.Component.extend({
         if(typeof jsonObj === 'string'){
             jsonObj = JSON.parse(jsonObj);
         }
-     
+
         if(this.options){
             if(typeof this.options === 'object'){
                 options = Ember.$.extend({}, this.optionsDefault, this.options);
@@ -423,12 +425,16 @@ export default Ember.Component.extend({
 
         json_pretty = _prettyPrint( jsonObj,
                                     options);
-        
+    console.log('returned json_pretty', json_pretty);
         return json_pretty;
     }.property('jsonObj'),
     actions: {
         toggleExpand: function(plusId){
             var id = this.get('customId');
+
+            Ember.Logger.info("Parent toggleExpand was clicked!", plusId, id);
+            console.log("Parent plusId=", plusId, " customId=" ,id);
+
             if(Ember.$('#' + id).find('#' + plusId).hasClass('fa-plus-square-o')){
                 Ember.$('#' + id).find('#' + plusId).removeClass('fa-plus-square-o');
                 Ember.$('#' + id).find('#' + plusId).addClass('fa-minus-square-o');
