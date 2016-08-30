@@ -386,7 +386,7 @@ export default Ember.Component.extend({
     id: '',
     attributeBindings: ['customId:id'],
     customId: '',
-    pretty: function () {
+    pretty: Ember.computed('jsonObj', function () {
         var jsonObj = this.get('jsonObj'),
             options,
             json_pretty,
@@ -415,7 +415,7 @@ export default Ember.Component.extend({
         json_pretty = _prettyPrint( jsonObj,
                                     options);
         return json_pretty;
-    }.property('jsonObj'),
+    }),
     expand: function(handler, tree){
         handler.removeClass('fa-plus-square-o');
         handler.addClass('fa-minus-square-o');
