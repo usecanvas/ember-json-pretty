@@ -51,9 +51,6 @@
     "configPath": "tests/dummy/config",
     "demoURL": "http://rodrigo-morais.github.io/ember-json-pretty"
   },
-  "dependencies": {
-    "ember-cli-font-awesome": "0.0.9"
-  },
   "gitHead": "012480486241667ab87b2f89f859306ec4f0d807",
   "bugs": {
     "url": "https://github.com/rodrigo-morais/ember-json-pretty/issues"
